@@ -1,0 +1,416 @@
+:root{
+  /* Background + surfaces (tan theme to match logo) */
+  --bg: #f3e4cf;                 /* light tan from logo */
+  --surface: #ffffff;            /* white surface */
+  --card: #ffffff;
+  --stroke: rgba(0,0,0,0.12);    /* dark stroke for light theme */
+
+  /* Text (dark on tan) */
+  --text: #2b2b2b;
+  --muted: #5a5a5a;
+
+  /* Brand (from logo) */
+  --brand: #f7931e;              /* primary orange */
+  --brand-dark: #d87913;         /* darker orange for hover */
+  --brand-light: #ffbd66;        /* highlight gold */
+
+  /* UI */
+  --radius: 14px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+html, body{ width: 100%; overflow-x: hidden; }
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a{ color: inherit; }
+
+/* Container: keep good margins on mobile so it doesn't feel edge-to-edge */
+.container{
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+/* Topbar */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(243,228,207,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0.65rem 0;
+  gap: 1rem;
+}
+
+/* IMPORTANT: remove hard min-width that can contribute to mobile issues */
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 0.75rem;
+  text-decoration:none;
+  min-width: 0;          /* was 240px */
+  flex: 1 1 auto;
+}
+
+.brand-logo{
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.brand-name{ font-weight: 800; font-size: 30px; letter-spacing: 0.3px; }
+.brand-sub{ font-size: 0.9rem; color: var(--muted); }
+
+.topbar-actions{
+  display:flex;
+  align-items:center;
+  gap: 0.6rem;
+  flex: 0 0 auto;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.15);
+  text-decoration:none;
+  color: var(--text);
+  background: #ffffff;
+  cursor:pointer;
+  font-weight: 700;
+  max-width: 100%;
+}
+.btn:hover{ border-color: rgba(0,0,0,0.25); }
+
+.btn.primary{
+  background: linear-gradient(135deg, var(--brand), var(--brand-light));
+  border: none;
+  color: #1a1208;
+  font-weight: 800;
+}
+.btn.primary:hover{
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+}
+
+.btn.ghost{ background: transparent; }
+.btn.full{ width: 100%; border-radius: 12px; }
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.15);
+  text-decoration:none;
+  color: var(--text);
+  background: #ffffff;
+  font-weight: 700;
+  max-width: 100%;
+}
+.pill:hover{ border-color: rgba(0,0,0,0.25); }
+
+.muted{ color: var(--muted); }
+
+/* Hero */
+.hero{ padding: 2.0rem 0 1.1rem; }
+.hero-single{ display:block; }
+.hero-copy h1{
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.05;
+  margin: 0.3rem 0 0.8rem;
+}
+.lead{
+  margin: 0 0 1.2rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.trust{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 0.75rem;
+  margin: 1.1rem 0 1.2rem;
+}
+.trust-item{
+  padding: 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #ffffff;
+}
+.trust-title{ font-weight: 800; }
+.trust-sub{ color: var(--muted); margin-top: 0.25rem; font-size: 0.95rem; }
+
+.hero-cta{ display:flex; gap: 0.7rem; flex-wrap: wrap; }
+
+/* Sections */
+.section{ padding: 2.2rem 0; }
+.section.alt{
+  background: rgba(0,0,0,0.03);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.section-head{ margin-bottom: 1.1rem; }
+.section-head h2{ margin: 0 0 0.35rem; font-size: 1.5rem; }
+.section-head p{ margin: 0; color: var(--muted); }
+
+.grid-3{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 0.9rem;
+}
+
+/* Card-like blocks on tan theme */
+.price-card,
+.tile,
+.fine-box,
+.contact-item{
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: var(--radius);
+  max-width: 100%;
+}
+
+/* Tiles */
+.tile{
+  padding: 1.1rem;
+}
+.tile-title{ font-weight: 900; margin-bottom: 0.35rem; }
+.tile-text{ color: var(--muted); line-height: 1.45; }
+
+/* Pricing */
+.pricing-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 0.9rem;
+}
+.price-card{
+  position: relative;
+  padding: 1.15rem;
+}
+.price-card h3{
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+.price{
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0.2rem 0 0.35rem;
+  letter-spacing: -0.5px;
+}
+.badge{
+  position:absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(247,147,30,0.18);
+  border: 1px solid rgba(247,147,30,0.35);
+  color: #7a4b10;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+.bullets{
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+.bullets li{ margin: 0.35rem 0; }
+
+.fine-row{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+.fine-box{
+  padding: 0.9rem;
+}
+.fine-title{ font-weight: 900; margin-bottom: 0.25rem; }
+.fine-text{ color: var(--muted); }
+
+/* Area */
+.area-grid{
+  display:grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  gap: 1rem;
+  align-items: start;
+}
+.checklist{
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, max-content));
+  column-gap: 0.45rem;
+  row-gap: 0.2rem;
+  justify-content: start;
+}
+
+.checklist li{
+  padding-left: 1rem;
+  margin: 0;
+  position: relative;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.checklist li::before{
+  content: "✓";
+  position:absolute;
+  left:0;
+  top:0;
+  color: var(--brand);
+  font-weight: 900;
+}
+
+/* Contact */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.contact-info{
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.contact-item{
+  padding: 0.9rem;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.contact-label{
+  font-weight: 900;
+  color: var(--muted);
+}
+.contact-value{
+  font-weight: 700;
+  color: var(--text);
+  min-width: 0;
+}
+.contact-value a{
+  color: #1a1208;
+  text-decoration: none;
+}
+.contact-value a:hover{
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer{
+  padding: 1.6rem 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-title{ font-weight: 900; }
+.footer-sub{ color: var(--muted); }
+.footer-links{
+  display:flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+.footer-links a{
+  color: var(--muted);
+  text-decoration:none;
+}
+.footer-links a:hover{ color: var(--text); }
+.footer-meta{ color: rgba(0,0,0,0.55); }
+
+/* Responsive */
+@media (max-width: 900px){
+  .trust{ grid-template-columns: 1fr; }
+  .grid-3{ grid-template-columns: 1fr; }
+  .pricing-grid{ grid-template-columns: 1fr; }
+  .fine-row{ grid-template-columns: 1fr; }
+  .area-grid{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+
+/* Phones: add MORE side padding so it doesn't feel too wide */
+@media (max-width: 520px){
+  .container{
+    width: min(1100px, calc(100% - 3.6rem)); /* ~1.3rem each side */
+  }
+
+  .topbar-inner{
+    gap: 0.75rem;
+  }
+
+  .brand-text{ display:none; }
+  .brand-logo{ width: 64px; height: 64px; }
+
+  .hero{ padding: 1.4rem 0 0.8rem; }
+  .section{ padding: 1.6rem 0; }
+
+  .tile{ padding: 0.95rem; }
+  .price-card{ padding: 1rem; }
+  .fine-box{ padding: 0.85rem; }
+
+  /* Contact rows: label above value */
+  .contact-item{
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  /* Service area: force wrap into 2 columns on small phones */
+  .checklist{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.75rem;
+  }
+
+  .btn{ padding: 0.65rem 0.9rem; }
+}
+
+/* Better footer on mobile */
+@media (max-width: 520px){
+  .footer-inner{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-links{
+    justify-content: center;
+    gap: 0.15rem;
+  }
+
+  .footer-links a{
+    padding: 0.25rem 0.4rem;
+    border-radius: 10px;
+  }
+
+  .footer-meta{
+    margin-top: 0.15rem;
+  }
+}
