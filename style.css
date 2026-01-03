@@ -415,3 +415,33 @@ a{ color: inherit; }
     margin-top: 0.15rem;
   }
 }
+
+/* Pricing: better 2-card layout */
+.pricing-grid.pricing-grid-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Make the extra-days card feel like a feature, not an afterthought */
+.price-card.extra-days{
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
+}
+
+/* Smaller suffix inside the big price */
+.price-suffix{
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--muted);
+  margin-left: 0.25rem;
+}
+
+/* Fine row: 2 boxes when we remove one */
+.fine-row.fine-row-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Responsive: keep it stacked on smaller screens */
+@media (max-width: 900px){
+  .pricing-grid.pricing-grid-2{ grid-template-columns: 1fr; }
+  .fine-row.fine-row-2{ grid-template-columns: 1fr; }
+}
