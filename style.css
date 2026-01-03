@@ -19,7 +19,8 @@
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior: auto; }
+html.smooth-scroll{ scroll-behavior: smooth; }
 html, body{ width: 100%; overflow-x: hidden; }
 
 body{
@@ -44,7 +45,7 @@ a{ color: inherit; }
   z-index: 20;
   background: rgba(243,228,207,0.92);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(0,0,0,0.10);
+  border-bottom: 3px solid rgba(0,0,0,0.10);
 }
 
 .topbar-inner{
@@ -261,8 +262,8 @@ a{ color: inherit; }
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, max-content));
-  column-gap: 0.45rem;
-  row-gap: 0.2rem;
+  column-gap: 1.45rem;
+  row-gap: .2rem;
   justify-content: start;
 }
 

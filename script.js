@@ -1,5 +1,25 @@
 // script.js (safe whether or not the contact form exists)
 
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// Start with smooth scroll OFF to prevent animated jump to #hash on load
+document.documentElement.classList.remove("smooth-scroll");
+
+window.addEventListener("load", () => {
+  // If page was loaded with a hash (e.g. #contact), remove it so it can't auto-scroll
+  if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+
+  // Force top
+  window.scrollTo(0, 0);
+
+  // Turn smooth scrolling back on for normal clicking
+  document.documentElement.classList.add("smooth-scroll");
+});
+
 (() => {
   // Footer year (always safe)
   const yearEl = document.getElementById("year");
