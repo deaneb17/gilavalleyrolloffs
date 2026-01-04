@@ -110,24 +110,6 @@ a{ color: inherit; }
   background: linear-gradient(135deg, var(--brand-dark), var(--brand));
 }
 
-.btn.ghost{ background: transparent; }
-.btn.full{ width: 100%; border-radius: 12px; }
-
-.pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 0.55rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.15);
-  text-decoration:none;
-  color: var(--text);
-  background: #ffffff;
-  font-weight: 700;
-  max-width: 100%;
-}
-.pill:hover{ border-color: rgba(0,0,0,0.25); }
-
 .muted{ color: var(--muted); }
 
 /* Hero */
@@ -172,12 +154,6 @@ a{ color: inherit; }
 .section-head{ margin-bottom: 1.1rem; }
 .section-head h2{ margin: 0 0 0.35rem; font-size: 1.5rem; }
 .section-head p{ margin: 0; color: var(--muted); }
-
-.grid-3{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 0.9rem;
-}
 
 /* Card-like blocks on tan theme */
 .price-card,
@@ -249,12 +225,6 @@ a{ color: inherit; }
 .fine-text{ color: var(--muted); }
 
 /* Area */
-.area-grid{
-  display:grid;
-  grid-template-columns: 1.25fr 0.9fr;
-  gap: 1rem;
-  align-items: start;
-}
 .checklist{
   list-style: none;
   padding: 0;
@@ -343,17 +313,32 @@ a{ color: inherit; }
   color: var(--muted);
   text-decoration:none;
 }
+
 .footer-links a:hover{ color: var(--text); }
 .footer-meta{ color: rgba(0,0,0,0.55); }
 
-/* Responsive */
-@media (max-width: 900px){
-  .trust{ grid-template-columns: 1fr; }
-  .grid-3{ grid-template-columns: 1fr; }
-  .pricing-grid{ grid-template-columns: 1fr; }
-  .fine-row{ grid-template-columns: 1fr; }
-  .area-grid{ grid-template-columns: 1fr; }
-  .contact-grid{ grid-template-columns: 1fr; }
+/* Pricing: better 2-card layout */
+.pricing-grid.pricing-grid-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Make the extra-days card feel like a feature, not an afterthought */
+.price-card.extra-days{
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
+}
+
+/* Smaller suffix inside the big price */
+.price-suffix{
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--muted);
+  margin-left: 0.25rem;
+}
+
+/* Fine row: 2 boxes when we remove one */
+.fine-row.fine-row-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* Phones: add MORE side padding so it doesn't feel too wide */
@@ -389,10 +374,7 @@ a{ color: inherit; }
   }
 
   .btn{ padding: 0.65rem 0.9rem; }
-}
 
-/* Better footer on mobile */
-@media (max-width: 520px){
   .footer-inner{
     display: grid;
     grid-template-columns: 1fr;
@@ -416,32 +398,12 @@ a{ color: inherit; }
   }
 }
 
-/* Pricing: better 2-card layout */
-.pricing-grid.pricing-grid-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* Make the extra-days card feel like a feature, not an afterthought */
-.price-card.extra-days{
-  background: #ffffff;
-  border-color: rgba(0,0,0,0.12);
-}
-
-/* Smaller suffix inside the big price */
-.price-suffix{
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--muted);
-  margin-left: 0.25rem;
-}
-
-/* Fine row: 2 boxes when we remove one */
-.fine-row.fine-row-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 /* Responsive: keep it stacked on smaller screens */
 @media (max-width: 900px){
   .pricing-grid.pricing-grid-2{ grid-template-columns: 1fr; }
   .fine-row.fine-row-2{ grid-template-columns: 1fr; }
+  .trust{ grid-template-columns: 1fr; }
+  .pricing-grid{ grid-template-columns: 1fr; }
+  .fine-row{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns: 1fr; }
 }
